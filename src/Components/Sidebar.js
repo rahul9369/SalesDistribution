@@ -83,7 +83,7 @@ const Sidebar = () => {
             className="h-12 w-12 rounded-full"
           />
           <div>
-            <p className="text-2xl text-red-300 font-semibold">RAhul</p>
+            <p className="text-2xl text-black font-semibold">Rahul</p>
             <p className="text-xs text-gray-500">Admin</p>
           </div>
         </div>
