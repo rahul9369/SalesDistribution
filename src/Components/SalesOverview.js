@@ -98,7 +98,7 @@ const SalesOverview = () => {
       </div>
 
       {/* Sales Circular Chart and Info */}
-      <div className="flex items-center justify-between ">
+      <div className="flex items-center mt-16 justify-between ">
         {/* Circular Chart */}
         <div className="relative flex justify-start font-bold">
           <svg className="w-24 h-24" viewBox="0 0 36 36">

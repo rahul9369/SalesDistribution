@@ -92,7 +92,7 @@ const PaymentGateways = () => {
     // Poll the backend every 30 seconds to update the data
     const interval = setInterval(() => {
       fetchPaymentData();
-    }, 30000); // 30 seconds (same as in ActiveUser component)
+    }, 30000); // 30 seconds
 
     return () => clearInterval(interval); // Clean up interval on unmount
   }, []);

@@ -12,13 +12,10 @@ const Shimmer = () => {
         <div className="h-6 bg-gray-300 rounded-full w-8 shimmer"></div>
       </div>
 
-      {/* Growth Placeholder */}
       <div className="h-4 bg-gray-300 rounded w-1/3 mb-4 shimmer"></div>
 
-      {/* Image Placeholder */}
       <div className="h-72 bg-gray-300 shimmer mb-4"></div>
 
-      {/* Total Active Users Placeholder */}
       <div className="h-6 bg-gray-300 rounded w-1/4 mb-2 shimmer"></div>
       <div className="h-4 bg-gray-300 rounded w-1/4 shimmer"></div>
     </div>

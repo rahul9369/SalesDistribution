@@ -13,10 +13,10 @@ const YearlySales = () => {
       try {
         setLoading(true);
         const response = await axios.get(
-          "https://dummy-data-omega.vercel.app/getdata" // Your API URL
+          "https://dummy-data-omega.vercel.app/getdata"
         );
-        const yearlySales = response.data.yearlySales; // Accessing 'yearlySales' object
-        setSalesData(yearlySales); // Store the fetched data in state
+        const yearlySales = response.data.yearlySales;
+        setSalesData(yearlySales);
         setLoading(false);
       } catch (err) {
         setError("Failed to load sales data.");
@@ -39,7 +39,6 @@ const YearlySales = () => {
       {/* Sales Graph */}
       <div className="relative flex justify-center items-center h-40 mt-4 shimmer"></div>
 
-      {/* Sales Values */}
       <div className="flex justify-between mt-6">
         <div className="flex items-center space-x-2">
           <span
@@ -157,7 +156,7 @@ const YearlySales = () => {
           <span className="text-blue-500">●</span>
           <div>
             <p className="text-blue-500 font-bold">
-              ${salesData["2023"] || "5476"} {/* Fetched value for 2023 */}
+              ${salesData["2023"] || "5476"}
             </p>
             <p className="text-gray-500 text-sm">2023</p>
           </div>
@@ -166,7 +165,7 @@ const YearlySales = () => {
           <span className="text-blue-300">●</span>
           <div>
             <p className="text-gray-500 font-bold">
-              ${salesData["2022"] || "4476"} {/* Fetched value for 2022 */}
+              ${salesData["2022"] || "4476"}
             </p>
             <p className="text-gray-500 text-sm">2022</p>
           </div>

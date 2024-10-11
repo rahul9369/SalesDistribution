@@ -5,15 +5,12 @@ import axios from "axios";
 // Shimmer Effect Component
 const Shimmer = () => (
   <div className="bg-white rounded-lg shadow-md p-6 animate-pulse">
-    {/* Header */}
     <div className="flex justify-between">
       <div className="h-6 bg-gray-300 rounded w-2/3 shimmer"></div>
       <div className="h-6 bg-gray-300 rounded-full w-8 shimmer"></div>
     </div>
 
-    {/* Shimmer Chart */}
     <div className="flex items-center mt-6">
-      {/* Left Side Labels (Shimmer) */}
       <div className="mr-4 flex flex-col justify-between h-24">
         <span className="h-4 bg-gray-300 rounded w-8 shimmer"></span>
         <span className="h-4 bg-gray-300 rounded w-6 shimmer"></span>
@@ -57,65 +54,62 @@ const RevenueUpdates = () => {
 
   useEffect(() => {
     fetchData();
-
-    // Poll the API every 30 seconds
-    const interval = setInterval(() => {
-      fetchData();
-    }, 30000); // 30 seconds
-
-    return () => clearInterval(interval); // Cleanup on unmount
   }, []);
 
   // Determine the max value to normalize chart heights
-  const maxValue = Math.max(...chartData, 120); // 120 as fallback if API data is empty
+  const maxValue = Math.max(...chartData, 90);
 
   return (
     <div className="bg-white rounded-lg shadow-md p-6 transform hover:scale-105 transition-all duration-300">
-      {/* Header */}
-      <div className="flex justify-between">
-        <h3 className="text-2xl font-semibold mb-4">Revenue Updates</h3>
-        <span className="bg-gray-100 rounded-full mt-1 p-3 cursor-pointer">
-          <PiDotsThree />
-        </span>
-      </div>
-
       {/* Loading and Error Handling */}
       {loading ? (
         <Shimmer />
       ) : error ? (
         <p className="text-red-500">{error}</p>
       ) : (
-        /* Chart with Labels */
-        <div className="flex items-center">
-          {/* Left Side Labels */}
-          <div className="mr-4 flex flex-col justify-between h-24">
-            <span className="text-gray-500 text-sm">{maxValue}</span>
-            <span className="text-gray-500 text-sm">{(maxValue * 2) / 3}</span>
-            <span className="text-gray-500 text-sm">{maxValue / 3}</span>
-            <span className="text-gray-500 text-sm">0</span>
+        <>
+          {/* Header */}
+          <div className="flex justify-between ">
+            <h3 className="text-2xl font-semibold mb-4">Revenue Updates</h3>
+            <span className="bg-gray-100 rounded-full mt-1 p-3 cursor-pointer">
+              <PiDotsThree />
+            </span>
           </div>
 
-          {/* Full Width Bar Chart */}
-          <div className="flex-grow">
-            <svg
-              className="w-full h-24"
-              viewBox="0 0 100 100"
-              preserveAspectRatio="none">
-              {/* Dynamic Data from API */}
-              {chartData.length > 0 &&
-                chartData.map((data, index) => (
-                  <rect
-                    key={index}
-                    x={`${index * (100 / chartData.length) + 5}%`} // Dynamically positioning the bars based on number of data points
-                    y={`${100 - (data / maxValue) * 100}%`} // Correctly calculating the y position for the bars
-                    width={`${90 / chartData.length}%`} // Ensure bar width adjusts to fit all bars
-                    height={`${(data / maxValue) * 100}%`} // Scale height to match the max value
-                    fill={index % 2 === 0 ? "#E0E7FF" : "#A5B4FC"} // Alternating colors
-                  />
-                ))}
-            </svg>
+          {/* Chart with Labels */}
+          <div className="flex items-center ">
+            {/* Left Side Labels */}
+            <div className="mr-4 flex flex-col mt-20 justify-between h-24">
+              <span className="text-gray-500 text-sm">{maxValue}</span>
+              <span className="text-gray-500 text-sm">
+                {(maxValue * 2) / 3}
+              </span>
+              <span className="text-gray-500 text-sm">{maxValue / 3}</span>
+              <span className="text-gray-500 text-sm">0</span>
+            </div>
+
+            {/* Full Width Bar Chart */}
+            <div className="flex-grow mt-20">
+              <svg
+                className="w-full h-24"
+                viewBox="0 0 100 100"
+                preserveAspectRatio="none">
+                {/* Dynamic Data from API */}
+                {chartData.length > 0 &&
+                  chartData.map((data, index) => (
+                    <rect
+                      key={index}
+                      x={`${index * (100 / chartData.length) + 5}%`} // Dynamically positioning the bars based on number of data points
+                      y={`${100 - (data / maxValue) * 100}%`} // Correctly calculating the y position for the bars
+                      width={`${90 / chartData.length}%`} // Ensure bar width adjusts to fit all bars
+                      height={`${(data / maxValue) * 100}%`} // Scale height to match the max value
+                      fill={index % 2 === 0 ? "#E0E7FF" : "#A5B4FC"} // Alternating colors
+                    />
+                  ))}
+              </svg>
+            </div>
           </div>
-        </div>
+        </>
       )}
     </div>
   );

@@ -40,7 +40,8 @@ const SalesDistribution = () => {
         const response = await axios.get(
           "https://dummy-data-omega.vercel.app/getdata"
         );
-        const data = response.data.saleDistribution || {}; // Adjust based on your API response structure
+        const data = response.data.saleDistribution || {};
+        console.log(response.data.saleDistribution);
         setSalesData({
           totalSales: data.totalSale || 0,
           websiteSales: data.byWebsite || 0,

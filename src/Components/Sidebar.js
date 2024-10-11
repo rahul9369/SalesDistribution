@@ -12,13 +12,13 @@ import { IoIosLogOut } from "react-icons/io";
 
 const Sidebar = () => {
   return (
-    <div className="h-screen w-84 rounded-lg bg-white shadow-md p-4 overflow-y-auto">
+    <div className="h-screen w-84  rounded-lg bg-white shadow-md p-4 overflow-y-auto">
       {/* Logo Section */}
 
       {/* Menu Items */}
       <nav>
         <div className="mb-6">
-          <h4 className="text-gray-600 text-xl ml-4 cursor-pointer font-bold mb-2">
+          <h4 className="text-gray-600 hover:bg-blue-100 px-15 text-start rounded-lg text-xl ml-4 cursor-pointer font-bold mb-2">
             HOME
           </h4>
           <div className="bg-blue-100 rounded-lg py-1 cursor-pointer px-5 flex flex-row text-blue-500 font-semibold">
